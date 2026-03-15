@@ -5,7 +5,8 @@ import { Users } from "lucide-react";
 const App = () => {
   const jobOpenings = [
     {
-      brandLogo: "https://thumbs.dreamstime.com/b/google-logo-vector-format-white-background-illustration-407571048.jpg",
+      brandLogo:
+        "https://thumbs.dreamstime.com/b/google-logo-vector-format-white-background-illustration-407571048.jpg",
       nameOfCompany: "Google",
       datePosted: "2 days ago",
       post: "Frontend Developer",
@@ -15,7 +16,8 @@ const App = () => {
       location: "Bangalore, India",
     },
     {
-      brandLogo: "https://thumbs.dreamstime.com/b/amazon-logo-editorial-illustrative-white-background-eps-download-vector-jpeg-banner-ai-amazon-logo-editorial-illustrative-208329107.jpg",
+      brandLogo:
+        "https://thumbs.dreamstime.com/b/amazon-logo-editorial-illustrative-white-background-eps-download-vector-jpeg-banner-ai-amazon-logo-editorial-illustrative-208329107.jpg",
       nameOfCompany: "Amazon",
       datePosted: "1 week ago",
       post: "Backend Developer",
@@ -25,7 +27,8 @@ const App = () => {
       location: "Hyderabad, India",
     },
     {
-      brandLogo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDiQXGMUd-boRykgZmJXW-MG1JD2x8GHwIyw&s",
+      brandLogo:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDiQXGMUd-boRykgZmJXW-MG1JD2x8GHwIyw&s",
       nameOfCompany: "Microsoft",
       datePosted: "3 days ago",
       post: "Software Engineer",
@@ -35,7 +38,8 @@ const App = () => {
       location: "Noida, India",
     },
     {
-      brandLogo: "https://static.vecteezy.com/system/resources/thumbnails/004/201/564/small/meta-social-network-emblem-blue-stylish-letter-m-or-mobius-band-vector.jpg",
+      brandLogo:
+        "https://static.vecteezy.com/system/resources/thumbnails/004/201/564/small/meta-social-network-emblem-blue-stylish-letter-m-or-mobius-band-vector.jpg",
       nameOfCompany: "Meta",
       datePosted: "5 days ago",
       post: "React Developer",
@@ -45,7 +49,8 @@ const App = () => {
       location: "Mumbai, India",
     },
     {
-      brandLogo: "https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456",
+      brandLogo:
+        "https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456",
       nameOfCompany: "Netflix",
       datePosted: "10 days ago",
       post: "UI Engineer",
@@ -55,7 +60,8 @@ const App = () => {
       location: "Remote",
     },
     {
-      brandLogo: "https://fabrikbrands.com/wp-content/uploads/Adobe-Logo-History-1-1155x770.png",
+      brandLogo:
+        "https://fabrikbrands.com/wp-content/uploads/Adobe-Logo-History-1-1155x770.png",
       nameOfCompany: "Adobe",
       datePosted: "2 weeks ago",
       post: "Web Developer",
@@ -65,7 +71,8 @@ const App = () => {
       location: "Pune, India",
     },
     {
-      brandLogo: "https://static.vecteezy.com/system/resources/previews/042/148/631/non_2x/spotify-logo-spotify-social-media-icon-free-png.png",
+      brandLogo:
+        "https://static.vecteezy.com/system/resources/previews/042/148/631/non_2x/spotify-logo-spotify-social-media-icon-free-png.png",
       nameOfCompany: "Spotify",
       datePosted: "4 days ago",
       post: "Frontend Engineer",
@@ -75,7 +82,8 @@ const App = () => {
       location: "Remote",
     },
     {
-      brandLogo: "https://brandlogos.net/wp-content/uploads/2022/07/airbnb-logo_brandlogos.net_vb6uh.png",
+      brandLogo:
+        "https://brandlogos.net/wp-content/uploads/2022/07/airbnb-logo_brandlogos.net_vb6uh.png",
       nameOfCompany: "Airbnb",
       datePosted: "3 weeks ago",
       post: "Full Stack Developer",
@@ -85,7 +93,8 @@ const App = () => {
       location: "Delhi, India",
     },
     {
-      brandLogo: "https://www.logoshape.com/wp-content/uploads/2024/09/uber-logo-svg_logoshape.png",
+      brandLogo:
+        "https://www.logoshape.com/wp-content/uploads/2024/09/uber-logo-svg_logoshape.png",
       nameOfCompany: "Uber",
       datePosted: "6 days ago",
       post: "Backend Engineer",
@@ -95,7 +104,8 @@ const App = () => {
       location: "Bangalore, India",
     },
     {
-      brandLogo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm8GMkNjXaDJieiDTHt_-4sRznwIhRaVpIIQ&s",
+      brandLogo:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm8GMkNjXaDJieiDTHt_-4sRznwIhRaVpIIQ&s",
       nameOfCompany: "Shopify",
       datePosted: "1 day ago",
       post: "JavaScript Developer",
@@ -110,18 +120,20 @@ const App = () => {
     <div>
       <div className="parent">
         {/* <Card /> */}
-        {jobOpenings.map(function (elem) {
+        {jobOpenings.map(function (elem, idx) {
           return (
-            <Card
-              company={elem.nameOfCompany}
-              logo={elem.brandLogo}
-              datePosted={elem.datePosted}
-              post={elem.post}
-              tag1={elem.tag1}
-              tag2={elem.tag2}
-              pay={elem.pay}
-              location={elem.location}
-            />
+            <div key={idx}>
+              <Card
+                company={elem.nameOfCompany}
+                logo={elem.brandLogo}
+                datePosted={elem.datePosted}
+                post={elem.post}
+                tag1={elem.tag1}
+                tag2={elem.tag2}
+                pay={elem.pay}
+                location={elem.location}
+              />
+            </div>
           );
         })}
       </div>
