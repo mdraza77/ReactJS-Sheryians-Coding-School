@@ -119,7 +119,6 @@ const App = () => {
   return (
     <div>
       <div className="parent">
-        {/* <Card /> */}
         {jobOpenings.map(function (elem, idx) {
           return (
             <div key={idx}>
