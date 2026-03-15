@@ -70,9 +70,9 @@ button {
 .top img {
   height: 30px;
   width: 30px;
-  border: 1px solid dadada;
+  border: 1px solid #dadada;
   border-radius: 50%;
-  padding: 2px;
+  padding: 3px;
 }
 
 .center {
