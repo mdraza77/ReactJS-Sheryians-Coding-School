@@ -5,6 +5,8 @@ const App = () => {
   const [name, setName] = useState("");
   const formHandler = (e) => {
     e.preventDefault();
+    console.log("Submitted by", name);
+    setName("");
   };
   return (
     <div>
@@ -12,7 +14,6 @@ const App = () => {
         action=""
         onSubmit={(e) => {
           formHandler(e);
-          console.log("Submitted");
         }}
       >
         {/* <h1>{name}</h1> */}
