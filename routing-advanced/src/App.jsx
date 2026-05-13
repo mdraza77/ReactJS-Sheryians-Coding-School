@@ -1,16 +1,28 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar.jsx";
-import Hero from "./components/Hero.jsx";
-import Footer from "./components/Footer.jsx";
-import About from "./pages/About.jsx";
-import Contact from "./pages/Contact.jsx";
-import Profile from "./pages/Profile.jsx";
-import Home from "./pages/Home.jsx";
-import NotFound from "./pages/NotFound.jsx";
-import Men from "./pages/Men.jsx";
-import Product from "./pages/Product.jsx";
-import Settings from "./pages/Settings.jsx";
+// import Navbar from "./components/Navbar.jsx";
+// import Hero from "./components/Hero.jsx";
+// import Footer from "./components/Footer.jsx";
+// import About from "./pages/About.jsx";
+// import Contact from "./pages/Contact.jsx";
+// import Profile from "./pages/Profile.jsx";
+// import Home from "./pages/Home.jsx";
+// import NotFound from "./pages/NotFound.jsx";
+// import Men from "./pages/Men.jsx";
+// import Product from "./pages/Product.jsx";
+// import Settings from "./pages/Settings.jsx";
+
+import {
+  Home,
+  About,
+  Profile,
+  NotFound,
+  Men,
+  Product,
+  Settings,
+  Contact,
+} from "./pages";
+import { Navbar, Footer, Hero } from "./components";
 
 const App = () => {
   return (
