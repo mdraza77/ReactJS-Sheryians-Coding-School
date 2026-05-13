@@ -1,17 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-// import Navbar from "./components/Navbar.jsx";
-// import Hero from "./components/Hero.jsx";
-// import Footer from "./components/Footer.jsx";
-// import About from "./pages/About.jsx";
-// import Contact from "./pages/Contact.jsx";
-// import Profile from "./pages/Profile.jsx";
-// import Home from "./pages/Home.jsx";
-// import NotFound from "./pages/NotFound.jsx";
-// import Men from "./pages/Men.jsx";
-// import Product from "./pages/Product.jsx";
-// import Settings from "./pages/Settings.jsx";
-
 import {
   Home,
   About,
@@ -22,19 +10,25 @@ import {
   Product,
   Settings,
   Contact,
+  Courses,
+  CourseDetails,
 } from "./pages";
-import { Navbar, Footer, Hero } from "./components";
+import { Navbar, Navbar2, Footer, Hero } from "./components";
 
 const App = () => {
   return (
     <div>
       <Navbar />
+      <Navbar2 />
       {/* <Hero /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/courses" element={<Courses />} />
+        {/* Dynamic Routing */}
+        <Route path="/courses/:id" element={<CourseDetails />} />
         <Route path="/product" element={<Product />}>
           <Route path="men" element={<Men />} />
           <Route path="women" element={<Women />} />

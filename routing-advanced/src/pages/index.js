@@ -7,3 +7,5 @@ export { default as Women } from "./Women";
 export { default as Product } from "./Product";
 export { default as Settings } from "./Settings";
 export { default as Contact } from "./Contact";
+export { default as Courses } from "./Courses";
+export { default as CourseDetails } from "./CourseDetails";
