@@ -10,7 +10,7 @@ const App = () => {
 
   const getImages = async () => {
     const response = await axios.get(
-      `https://picsum.photos/v2/list?page=${paginateion}&limit=15`,
+      `https://picsum.photos/v2/list?page=${paginateion}&limit=16`,
     );
     setImage(response.data);
   };
@@ -28,7 +28,7 @@ const App = () => {
     data = image.map(function (elem, idx) {
       return (
         <div key={idx}>
-          <Card elem={elem}/>
+          <Card elem={elem} />
         </div>
       );
     });
@@ -36,11 +36,11 @@ const App = () => {
 
   return (
     <div className="bg-black h-screen">
-      {/* <h1 className="text-4xl font-bold text-green-600">{paginateion}</h1> */}
-      <div className="flex flex-wrap gap-4">{data}</div>
+      <div className="flex flex-wrap gap-4 justify-center py-8">{data}</div>
       <div className="flex justify-center">
         <div className="flex justify-center gap-4 py-8">
           <button
+            style={{ opacity: paginateion == 1 ? 0.6 : 1 }}
             className="px-4 py-2 rounded-lg bg-gray-500 active:scale-95 hover:bg-gray-600 active:bg-gray-700 text-lg text-white cursor-pointer"
             onClick={() => {
               if (paginateion > 1) {
