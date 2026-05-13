@@ -18,6 +18,7 @@ import {
   Profile,
   NotFound,
   Men,
+  Women,
   Product,
   Settings,
   Contact,
@@ -35,8 +36,9 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/product" element={<Product />} />
-        <Route path="/settings" element={<Settings />} />
         <Route path="/product/men" element={<Men />} />
+        <Route path="/product/women" element={<Women />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

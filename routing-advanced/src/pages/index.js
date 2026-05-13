@@ -3,6 +3,7 @@ export { default as About } from "./About";
 export { default as Profile } from "./Profile";
 export { default as NotFound } from "./NotFound";
 export { default as Men } from "./Men";
+export { default as Women } from "./Women";
 export { default as Product } from "./Product";
 export { default as Settings } from "./Settings";
 export { default as Contact } from "./Contact";
