@@ -1,0 +1,27 @@
+const express = require("express");
+
+const app = express();
+
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Running");
+});
+
+const notes = [];
+
+// Create Note
+app.post("/notes", (req, res) => {
+  console.log(req.body);
+  notes.push(req.body);
+  res.send("Created");
+});
+
+// Get Notes
+app.get("/notes", (req, res) => {
+  res.send(notes);
+});
+
+app.listen(3000, () => {
+  console.log("Server is running on http://localhost:3000");
+});
