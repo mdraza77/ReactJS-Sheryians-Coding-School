@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
 const noteModel = require("./models/note.model");
+const cors = require("cors");
 
 app.use(express.json());
+app.use(cors());
 
 // Create Note [POST]
 app.post("/notes", async (req, res) => {
@@ -23,7 +25,7 @@ app.get("/notes", async (req, res) => {
   const notes = await noteModel.find();
   res.status(200).json({
     message: "Notes Fetched Successfully",
-    notes: notes,
+    notes
   });
 });
 
