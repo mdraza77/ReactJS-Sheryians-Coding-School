@@ -3,18 +3,85 @@ import axios from "axios";
 
 const App = () => {
   const [note, setNote] = useState([]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
-  useEffect(() => {
-    axios.get("http://localhost:3000/notes").then((res) => {
-      // console.log(res.data);
+  const fetchNotes = async () => {
+    await axios.get("http://localhost:3000/notes").then((res) => {
       setNote(res.data.notes);
     });
+  };
+
+  useEffect(() => {
+    fetchNotes();
   }, []);
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      await axios.post("http://localhost:3000/notes", {
+        title: title,
+        description: description,
+      });
+      setTitle("");
+      setDescription("");
+      fetchNotes();
+    } catch (error) {
+      window.alert("Error While Creating", error);
+    }
+  };
 
   return (
     <div>
       <div className="px-5 py-5">
-        <div className="flex gap-5">
+        <div>
+          <form onSubmit={submitHandler} className="max-w-sm mx-auto space-y-4">
+            <div>
+              <label
+                htmlFor="visitors"
+                className="block mb-2.5 text-sm font-medium text-heading"
+              >
+                Title
+              </label>
+              <input
+                type="text"
+                id="visitors"
+                name="title"
+                value={title}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+                className="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-3.5 py-3 shadow-xs placeholder:text-body"
+                placeholder=""
+                required
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="visitors"
+                className="block mb-2.5 text-sm font-medium text-heading"
+              >
+                Description
+              </label>
+              <input
+                type="text"
+                id="visitors"
+                name="description"
+                value={description}
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
+                className="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-3.5 py-3 shadow-xs placeholder:text-body"
+                placeholder=""
+                required
+              />
+            </div>
+            <button>Submit</button>
+          </form>
+        </div>
+
+        <div className="flex flex-wrap gap-5">
           {note.map(function (elem, idx) {
             return (
               <div key={idx}>
