@@ -32,6 +32,15 @@ const App = () => {
     }
   };
 
+  const deleteNote = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/notes/${id}`);
+      fetchNotes();
+    } catch (error) {
+      window.alert("Error While Deleting!", error);
+    }
+  };
+
   return (
     <div>
       <div className="px-5 py-5">
@@ -92,6 +101,13 @@ const App = () => {
                     </h5>
                     <p className="text-body">{elem.description}</p>
                   </div>
+                  <button
+                    onClick={() => {
+                      deleteNote(elem._id);
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             );
