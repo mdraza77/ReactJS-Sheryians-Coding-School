@@ -5,6 +5,8 @@ const App = () => {
   const [note, setNote] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const [editId, setEditId] = useState(null);
 
   const fetchNotes = async () => {
     await axios
@@ -21,19 +23,33 @@ const App = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    try {
-      await axios.post(
-        "https://reactjs-sheryians-coding-school.onrender.com/notes",
-        {
-          title: title,
-          description: description,
-        },
-      );
-      setTitle("");
-      setDescription("");
-      fetchNotes();
-    } catch (error) {
-      window.alert("Error While Creating", error);
+    if (isEditing) {
+      try {
+        await axios.patch(
+          `https://reactjs-sheryians-coding-school.onrender.com/notes/${editId}`,
+          { title: title, description: description },
+        );
+        setTitle("");
+        setDescription("");
+        fetchNotes();
+      } catch (error) {
+        window.alert("Error While Updating", error);
+      }
+    } else {
+      try {
+        await axios.post(
+          "https://reactjs-sheryians-coding-school.onrender.com/notes",
+          {
+            title: title,
+            description: description,
+          },
+        );
+        setTitle("");
+        setDescription("");
+        fetchNotes();
+      } catch (error) {
+        window.alert("Error While Creating", error);
+      }
     }
   };
 
@@ -114,6 +130,16 @@ const App = () => {
                     }}
                   >
                     Delete
+                  </button>
+                  <button
+                    onClick={() => {
+                      setIsEditing(true);
+                      setTitle(elem.title);
+                      setDescription(elem.description);
+                      setEditId(elem._id);
+                    }}
+                  >
+                    Edit
                   </button>
                 </div>
               </div>
