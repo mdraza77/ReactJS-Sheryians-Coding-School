@@ -7,7 +7,7 @@ const App = () => {
   const [description, setDescription] = useState("");
 
   const fetchNotes = async () => {
-    await axios.get("http://localhost:3000/notes").then((res) => {
+    await axios.get("https://reactjs-sheryians-coding-school.onrender.com/notes").then((res) => {
       setNote(res.data.notes);
     });
   };
@@ -20,7 +20,7 @@ const App = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:3000/notes", {
+      await axios.post("https://reactjs-sheryians-coding-school.onrender.com/notes", {
         title: title,
         description: description,
       });
@@ -34,7 +34,7 @@ const App = () => {
 
   const deleteNote = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/notes/${id}`);
+      await axios.delete(`https://reactjs-sheryians-coding-school.onrender.com/notes/${id}`);
       fetchNotes();
     } catch (error) {
       window.alert("Error While Deleting!", error);
