@@ -7,9 +7,11 @@ const App = () => {
   const [description, setDescription] = useState("");
 
   const fetchNotes = async () => {
-    await axios.get("https://reactjs-sheryians-coding-school.onrender.com/notes").then((res) => {
-      setNote(res.data.notes);
-    });
+    await axios
+      .get("https://reactjs-sheryians-coding-school.onrender.com/notes")
+      .then((res) => {
+        setNote(res.data.notes);
+      });
   };
 
   useEffect(() => {
@@ -20,10 +22,13 @@ const App = () => {
     e.preventDefault();
 
     try {
-      await axios.post("https://reactjs-sheryians-coding-school.onrender.com/notes", {
-        title: title,
-        description: description,
-      });
+      await axios.post(
+        "https://reactjs-sheryians-coding-school.onrender.com/notes",
+        {
+          title: title,
+          description: description,
+        },
+      );
       setTitle("");
       setDescription("");
       fetchNotes();
@@ -34,7 +39,9 @@ const App = () => {
 
   const deleteNote = async (id) => {
     try {
-      await axios.delete(`https://reactjs-sheryians-coding-school.onrender.com/notes/${id}`);
+      await axios.delete(
+        `https://reactjs-sheryians-coding-school.onrender.com/notes/${id}`,
+      );
       fetchNotes();
     } catch (error) {
       window.alert("Error While Deleting!", error);
