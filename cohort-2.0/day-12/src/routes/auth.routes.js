@@ -9,7 +9,7 @@ authRouter.post("/register", async (req, res) => {
   const isUserAlreadyExists = await userModel.findOne({ email });
 
   if (isUserAlreadyExists) {
-    return res.status(400).json({
+    return res.status(409).json({
       message: "User already exists with this email",
     });
   }
