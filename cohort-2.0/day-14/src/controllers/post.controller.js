@@ -45,4 +45,73 @@ const createPostController = async (req, res) => {
   });
 };
 
-module.exports = { createPostController };
+const getPostController = async (req, res) => {
+  const jwt_token = req.cookies.jwt_token;
+  let verify_jwt_token;
+  try {
+    verify_jwt_token = jwt.verify(jwt_token, process.env.JWT_SECRET);
+  } catch (error) {
+    return res.status(401).json({
+      message: "Unauthorized access",
+      error: error.message,
+    });
+  }
+  const userId = verify_jwt_token.id;
+
+  const posts = await postModel.find({ user: userId });
+
+  res.status(200).json({
+    message: "Post fetched successfully",
+    posts: posts,
+  });
+};
+
+const getPostDetailsController = async (req, res) => {
+  const jwt_token = req.cookies.jwt_token;
+
+  if (!jwt_token) {
+    return res.status(401).json({
+      message: "Unauthorized access",
+    });
+  }
+
+  let verify_jwt_token;
+
+  try {
+    verify_jwt_token = await jwt.verify(jwt_token, process.env.JWT_SECRET);
+  } catch (error) {
+    return res.status(401).json({
+      message: "Invalid token",
+      error: error.message,
+    });
+  }
+
+  const userId = verify_jwt_token.id;
+  const postId = req.params.postId;
+  const post = await postModel.findById({ _id: postId });
+
+  if (!post) {
+    return res.status(404).json({
+      message: "Post not found",
+    });
+  }
+
+  const isValidUser = post.user.toString() === userId; // Because object and string
+
+  if (!isValidUser) {
+    res.status(403).json({
+      message: "Not created by you",
+    });
+  }
+
+  return res.status(200).json({
+    message: "Post fetched successfully",
+    post,
+  });
+};
+
+module.exports = {
+  createPostController,
+  getPostController,
+  getPostDetailsController,
+};
