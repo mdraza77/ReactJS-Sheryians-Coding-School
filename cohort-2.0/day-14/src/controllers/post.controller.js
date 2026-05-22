@@ -14,29 +14,10 @@ const createPostController = async (req, res) => {
     folder: "insta-clone",
   });
 
-  const jwt_token = req.cookies.jwt_token;
-
-  if (!jwt_token) {
-    return res.status(401).json({
-      message: "Access denied, Token not provided",
-    });
-  }
-
-  let verify_jwt_token = null;
-
-  try {
-    verify_jwt_token = jwt.verify(jwt_token, process.env.JWT_SECRET);
-  } catch (error) {
-    return res.status(401).json({
-      message: "Unauthorized access",
-      error: error.message,
-    });
-  }
-
   const post = await postModel.create({
     caption: req.body.caption,
     image_path: file.url,
-    user: verify_jwt_token.id,
+    user: req.user.id,
   });
 
   res.status(201).json({
@@ -46,17 +27,7 @@ const createPostController = async (req, res) => {
 };
 
 const getPostController = async (req, res) => {
-  const jwt_token = req.cookies.jwt_token;
-  let verify_jwt_token;
-  try {
-    verify_jwt_token = jwt.verify(jwt_token, process.env.JWT_SECRET);
-  } catch (error) {
-    return res.status(401).json({
-      message: "Unauthorized access",
-      error: error.message,
-    });
-  }
-  const userId = verify_jwt_token.id;
+  const userId = req.user.id;
 
   const posts = await postModel.find({ user: userId });
 
@@ -67,26 +38,7 @@ const getPostController = async (req, res) => {
 };
 
 const getPostDetailsController = async (req, res) => {
-  const jwt_token = req.cookies.jwt_token;
-
-  if (!jwt_token) {
-    return res.status(401).json({
-      message: "Unauthorized access",
-    });
-  }
-
-  let verify_jwt_token;
-
-  try {
-    verify_jwt_token = await jwt.verify(jwt_token, process.env.JWT_SECRET);
-  } catch (error) {
-    return res.status(401).json({
-      message: "Invalid token",
-      error: error.message,
-    });
-  }
-
-  const userId = verify_jwt_token.id;
+  const userId = req.user.id;
   const postId = req.params.postId;
   const post = await postModel.findById({ _id: postId });
 
