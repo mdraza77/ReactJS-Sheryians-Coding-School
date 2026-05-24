@@ -47,7 +47,7 @@ const registerController = async (req, res) => {
   });
 
   const jwt_token = jwt.sign(
-    { id: user._id, email: user.emal },
+    { id: user._id, email: user.emal, username: user.username },
     process.env.JWT_SECRET,
     { expiresIn: "1h" },
   );
@@ -105,6 +105,7 @@ const loginController = async (req, res) => {
     {
       id: user._id,
       email: user.email,
+      username: user.username,
     },
     process.env.JWT_SECRET,
     { expiresIn: "1h" },
