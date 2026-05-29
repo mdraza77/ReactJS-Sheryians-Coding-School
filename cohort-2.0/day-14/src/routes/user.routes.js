@@ -22,4 +22,10 @@ userRouter.post(
   userController.unFollowUserController,
 );
 
+userRouter.put(
+  "/updatefollow/:username",
+  identifyUser,
+  userController.updateFollowStatusController,
+);
+
 module.exports = userRouter;

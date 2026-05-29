@@ -97,4 +97,50 @@ async function unFollowUserController(req, res) {
   });
 }
 
-module.exports = { followUserController, unFollowUserController };
+const updateFollowStatusController = async (req, res) => {
+  const followerUsername = req.user.username;
+  const followeeUsername = req.params.username;
+  const { status } = req.body;
+
+  // Check if the user is following
+  const isFollowing = await followModel.findOne({
+    follower: followerUsername,
+    followee: followeeUsername,
+  });
+
+  if (!isFollowing) {
+    return res.status(200).json({
+      message: `No follow request!`,
+    });
+  }
+
+  let updateFollow = null;
+
+  if (status === "rejected") {
+    updateFollow = await followModel.findByIdAndDelete(isFollowing._id);
+
+    res.status(200).json({
+      message: "Rejected the follow request",
+      status: updateFollow,
+    });
+  }
+
+  updateFollow = await followModel.findByIdAndUpdate(
+    isFollowing._id,
+    {
+      status: status,
+    },
+    { new: true, runValidators: true },
+  );
+
+  res.status(200).json({
+    message: "Accepted the follow request",
+    status: updateFollow,
+  });
+};
+
+module.exports = {
+  followUserController,
+  unFollowUserController,
+  updateFollowStatusController,
+};
