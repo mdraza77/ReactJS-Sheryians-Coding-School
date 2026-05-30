@@ -12,11 +12,15 @@ const Register = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3000/api/auth/register", {
-        username,
-        email,
-        password,
-      })
+      .post(
+        "http://localhost:3000/api/auth/register",
+        {
+          username,
+          email,
+          password,
+        }, // sending the data with api
+        { withCredentials: true }, // for storing jwt in cookies storage
+      )
       .then((res) => {
         console.log(res.data);
       });
@@ -24,7 +28,7 @@ const Register = () => {
     console.log("Submitted");
   }
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center min-h-screen">
       <form
         onSubmit={handleSubmit}
         className="bg-white text-gray-500 max-w-[340px] w-full mx-4 md:p-6 p-4 py-8 text-left text-sm rounded-lg shadow-[0px_0px_10px_0px] shadow-black/10"
@@ -43,10 +47,10 @@ const Register = () => {
             <path
               d="M3.125 13.125a4.375 4.375 0 0 1 8.75 0M10 4.375a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"
               stroke="#6B7280"
-              stroke-opacity=".6"
-              stroke-width="1.3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeOpacity=".6"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
           <input
@@ -71,17 +75,17 @@ const Register = () => {
             <path
               d="m2.5 4.375 3.875 2.906c.667.5 1.583.5 2.25 0L12.5 4.375"
               stroke="#6B7280"
-              stroke-opacity=".6"
-              stroke-width="1.3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeOpacity=".6"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M11.875 3.125h-8.75c-.69 0-1.25.56-1.25 1.25v6.25c0 .69.56 1.25 1.25 1.25h8.75c.69 0 1.25-.56 1.25-1.25v-6.25c0-.69-.56-1.25-1.25-1.25Z"
               stroke="#6B7280"
-              stroke-opacity=".6"
-              stroke-width="1.3"
-              stroke-linecap="round"
+              strokeOpacity=".6"
+              strokeWidth="1.3"
+              strokeLinecap="round"
             />
           </svg>
           <input
@@ -106,17 +110,17 @@ const Register = () => {
             <path
               d="m2.5 4.375 3.875 2.906c.667.5 1.583.5 2.25 0L12.5 4.375"
               stroke="#6B7280"
-              stroke-opacity=".6"
-              stroke-width="1.3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeOpacity=".6"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M11.875 3.125h-8.75c-.69 0-1.25.56-1.25 1.25v6.25c0 .69.56 1.25 1.25 1.25h8.75c.69 0 1.25-.56 1.25-1.25v-6.25c0-.69-.56-1.25-1.25-1.25Z"
               stroke="#6B7280"
-              stroke-opacity=".6"
-              stroke-width="1.3"
-              stroke-linecap="round"
+              strokeOpacity=".6"
+              strokeWidth="1.3"
+              strokeLinecap="round"
             />
           </svg>
           <input
