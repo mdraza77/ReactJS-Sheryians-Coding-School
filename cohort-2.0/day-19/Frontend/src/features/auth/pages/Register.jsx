@@ -11,19 +11,19 @@ const Register = () => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    axios
-      .post(
-        "http://localhost:3000/api/auth/register",
-        {
-          username,
-          email,
-          password,
-        }, // sending the data with api
-        { withCredentials: true }, // for storing jwt in cookies storage
-      )
-      .then((res) => {
-        console.log(res.data);
-      });
+    // axios
+    //   .post(
+    //     "http://localhost:3000/api/auth/register",
+    //     {
+    //       username,
+    //       email,
+    //       password,
+    //     }, // sending the data with api
+    //     { withCredentials: true }, // for storing jwt in cookies storage
+    //   )
+    //   .then((res) => {
+    //     console.log(res.data);
+    //   });
 
     console.log("Submitted");
   }
